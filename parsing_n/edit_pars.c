@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 18:08:59 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/07/12 19:25:49 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/07/12 19:30:49 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1137,14 +1137,14 @@ t_cmds	*norm_commands2(char *cmds, t_env *evp, t_cmds *commands, int i)
 
 	split_pipe(evp, commands);
 
-    fprintf(stderr, "%s\n", commands->type);
+    // fprintf(stderr, "%s\n", commands->type);
     // fprintf(stderr, "%s\n", commands->next_p);
-    if (commands->next_p == NULL)
-        fprintf(stderr, "null\n");
+    // if (commands->next_p == NULL)
+    //     fprintf(stderr, "null\n");
     // fprintf(stderr, "%s\n", commands->next_p->next_p->type);
     // fprintf(stderr, "%s\n", commands->next_p->next_p->next_p->type);
 	// fprintf(stderr, "[%s]\n", commands->type);
-	// t_commands *tmp1 = commands;
+	// t_cmds *tmp1 = commands;
 	// while(tmp1)
 	// {	
 	// 	// fprintf(stderr, "[%s]\n", tmp1->command);

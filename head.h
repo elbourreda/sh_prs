@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:25:09 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/07/12 18:54:02 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/07/12 20:03:04 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ typedef struct s_filerdr
 
 typedef struct s_cmds
 {
-    char *command;
+    char *command;//
     char *line;
     char **all;
-    char *cmd;
     char *type;
     char **arguments;
     int option; 

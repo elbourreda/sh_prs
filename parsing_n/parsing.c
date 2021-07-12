@@ -6,7 +6,7 @@
 /*   By: rel-bour <rel-bour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:26:07 by rel-bour          #+#    #+#             */
-/*   Updated: 2021/07/12 19:22:01 by rel-bour         ###   ########.fr       */
+/*   Updated: 2021/07/12 20:07:25 by rel-bour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void initil_strct()
 
     cmds = all_t();
 	cmds->line = NULL;
-	cmds->cmd = NULL;
 	cmds->type = NULL;
 	cmds->arguments = NULL;
 	cmds->option = 0;
@@ -154,6 +153,7 @@ t_cmds	*new_commands(void)
 	if (!commands)
 		return (NULL);
 	commands->command = NULL;
+	commands->line = NULL;
 	commands->type = NULL;
 	commands->arguments = NULL;
 	commands->all = NULL;
@@ -165,6 +165,43 @@ t_cmds	*new_commands(void)
 	return (commands);
 }
 
+void test_this(t_cmds *cmds)
+{
+	t_cmds *tmp1 = cmds;
+	while(tmp1)
+	{	
+		fprintf(stderr, "line = [%s]\n", tmp1->line);
+		fprintf(stderr, "type = [%s]\n", tmp1->type);
+		fprintf(stderr, "command = [%s]\n", tmp1->command);
+		fprintf(stderr, "option = [%d]\n", tmp1->option);
+
+			int h = 0;
+			fprintf(stderr, "args = ");
+			while (tmp1->arguments && tmp1->arguments[h])
+			{
+				fprintf(stderr, "[%s] ", tmp1->arguments[h]);
+				h++;
+			}
+			fprintf(stderr, "\n");
+
+			h = 0;
+			fprintf(stderr, "all = ");
+			while (tmp1->all && tmp1->all[h])
+			{
+				fprintf(stderr, "[%s] ", tmp1->all[h]);
+				h++;
+			}
+			fprintf(stderr, "\n");
+		
+		if (tmp1->next_p == NULL)
+			fprintf(stderr, "next_p = [null]\n");
+		
+		fprintf(stderr,"============================\n");
+		
+		tmp1 = tmp1->next_p;
+	}
+}
+
 void main_parsing(char **envs)
 {
     t_cmds *cmds;
@@ -172,15 +209,16 @@ void main_parsing(char **envs)
 	
 	evp = malloc(sizeof(t_env));
 	initsial_envs(&evp, envs);
-    // cmds = new_commands();
 	cmds = new_commands();
 	cmds->line = readline("minishell$> ");
 
 	
     get_commands(evp, &cmds, cmds->line);	
+	
 
+	test_this(cmds);
 	
 	
 	add_history(cmds->line);
-	// free(cmds->line);
+	free(cmds->line);
 }
